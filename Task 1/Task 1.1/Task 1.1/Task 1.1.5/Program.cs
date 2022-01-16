@@ -8,7 +8,7 @@ namespace Task_1._1._5
         static void Main(string[] args)
         {
             Console.WriteLine("Task 1.1.5\n");
-            TasksClassLibrary.SumOfMultiple.SumOfNumbers();
+            SumOfMultiple.SumOfNumbers();
         }
     }
 }
