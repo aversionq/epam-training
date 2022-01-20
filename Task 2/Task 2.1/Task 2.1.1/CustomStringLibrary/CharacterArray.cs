@@ -99,16 +99,16 @@ namespace CustomStringLibrary
             return resultStr.ToString();
         }
 
-        // Определение неявного преобразования CharacterArray в string.
+        // Определение явного преобразования CharacterArray в string.
         public static explicit operator string(CharacterArray chArr) => new string(chArr.CharArray);
 
-        // Определение неявного преобразования string в CharacterArray.
+        // Определение явного преобразования string в CharacterArray.
         public static explicit operator CharacterArray(string str) => new CharacterArray(str);
 
-        // Определение неявного преобразования char[] в CharacterArray.
+        // Определение явного преобразования char[] в CharacterArray.
         public static explicit operator CharacterArray(char[] charArr) => new CharacterArray(charArr);
 
-        // Определение неявного преобразования CharacterArray в char[].
+        // Определение явного преобразования CharacterArray в char[].
         public static explicit operator char[](CharacterArray chArr) => chArr.CharArray;
 
         // Метод, определяющий среднее арифметическое символов по таблице Unicode.
