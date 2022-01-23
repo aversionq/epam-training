@@ -8,7 +8,7 @@ namespace FiguresClassLibrary
 {
     public class Ring : Figure
     {
-        // Кольцо реализовано с помощью агрегации.
+        // Кольцо реализовано с помощью агрегации, так как оно является совокупностью 2 кругов.
         public Round inner;
         public Round outer;
         public (double, double) Center { get; }

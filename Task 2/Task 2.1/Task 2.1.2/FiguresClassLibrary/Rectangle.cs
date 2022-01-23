@@ -22,7 +22,7 @@ namespace FiguresClassLibrary
         public override string ToString()
         {
             return $"Прямоугольник со сторонами {Side1} и {Side2}. Периметр = {this.GetPerimeter()}," +
-                $"площадь = {this.GetArea()}";
+                $" площадь = {this.GetArea()}";
         }
     }
 }

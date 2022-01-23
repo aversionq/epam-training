@@ -21,7 +21,7 @@ namespace FiguresClassLibrary
         public override string ToString()
         {
             return $"Квадрат со стороной = {Side1}. Периметр = {this.GetPerimeter()}," +
-                $"площадь = {this.GetArea()}";
+                $" площадь = {this.GetArea()}";
         }
     }
 }
