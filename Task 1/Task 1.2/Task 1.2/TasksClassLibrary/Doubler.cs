@@ -20,6 +20,7 @@ namespace TasksClassLibrary
             for (int i = 0; i < inputStrFirst.Length; ++i)
             {
                 bool inString = false;    // Флаг нахождения символа.
+
                 foreach (var ch in uniqueChars)
                 {
                     if (inputStrFirst[i].Equals(ch))     // Если в первой строке нашёлся символ из второй строки.
