@@ -19,11 +19,15 @@ namespace TasksClassLibrary
             string uniqueChars = StringUniqueChars(inputStrSecond);
             for (int i = 0; i < inputStrFirst.Length; ++i)
             {
+<<<<<<< HEAD
                 bool inString = false;    // Флаг нахождения символа.
+=======
+>>>>>>> main
                 foreach (var ch in uniqueChars)
                 {
                     if (inputStrFirst[i].Equals(ch))     // Если в первой строке нашёлся символ из второй строки.
                     {
+<<<<<<< HEAD
                         inString = true;
                     }
                 }
@@ -31,6 +35,11 @@ namespace TasksClassLibrary
                 {
                     extendedStr.Append(inputStrFirst[i]);
                 }
+=======
+                        extendedStr.Append(inputStrFirst[i]);
+                    }
+                }
+>>>>>>> main
                 extendedStr.Append(inputStrFirst[i]);
             }
 
