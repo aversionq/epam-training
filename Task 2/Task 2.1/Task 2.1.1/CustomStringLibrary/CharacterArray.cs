@@ -6,7 +6,7 @@ namespace CustomStringLibrary
     public class CharacterArray
     {
         // Массив символов.
-        public char[] CharArray { get; set; }
+        private char[] CharArray { get; set; }
 
         // Свойство, возвращающее длину массива символов.
         public int Length
