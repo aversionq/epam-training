@@ -20,11 +20,7 @@ namespace TasksClassLibrary
 
             if (inputCheckA && inputCheckB && a > 0 && b > 0)
             {
-<<<<<<< HEAD
-                Console.WriteLine("Площадь прямоугольника = " + a * b);
-=======
                 Console.WriteLine($"Площадь прямоугольника = {a * b}");
->>>>>>> main
             }
             else
             {
