@@ -26,8 +26,8 @@ namespace FileManagerClassLibrary
 
         public void StartBackup()
         {
-            ClearDirectory();   // Чистим рабочую директорию.
             int choice = GetBackupNumber();
+            ClearDirectory();   // Чистим рабочую директорию.
             // Копируем в рабочую директорию нужный бэкап.
             FileManagerHelper.CreateDirectoryCopy(backups[choice], FileManagerHelper.WorkingDir);
         }
