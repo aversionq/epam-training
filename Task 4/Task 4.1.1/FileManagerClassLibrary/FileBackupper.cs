@@ -10,7 +10,7 @@ namespace FileManagerClassLibrary
     internal class FileBackupper : IBackuppable
     {
         // Массив с путями всех доступных бэкапов.
-        private static string[] backups = Directory.GetDirectories(FileManagerHelper.BackupDir);
+        private static string[] _backups = Directory.GetDirectories(FileManagerHelper.BackupDir);
 
         public FileBackupper(string dir)
         {
@@ -27,19 +27,19 @@ namespace FileManagerClassLibrary
         public void StartBackup()
         {
             int choice = GetBackupNumber();
-            ClearDirectory();   // Чистим рабочую директорию.
+            ClearDirectory(FileManagerHelper.WorkingDir);   // Чистим рабочую директорию.
             // Копируем в рабочую директорию нужный бэкап.
-            FileManagerHelper.CreateDirectoryCopy(backups[choice], FileManagerHelper.WorkingDir);
+            FileManagerHelper.CreateDirectoryCopy(_backups[choice], FileManagerHelper.WorkingDir);
         }
 
         // Метод выводит на экран пользователя список доступных бэкапов.
         private void ShowAvailableBackups()
         {
-            if (backups.Length > 1)
+            if (_backups.Length > 1)
             {
-                for (int i = 0; i < backups.Length; i++)
+                for (int i = 0; i < _backups.Length; i++)
                 {
-                    Console.WriteLine($"{i + 1}: {new DirectoryInfo(backups[i]).Name}");
+                    Console.WriteLine($"{i + 1}: {new DirectoryInfo(_backups[i]).Name}");
                 }
             }
             else
@@ -65,9 +65,9 @@ namespace FileManagerClassLibrary
         }
 
         // Метод очистки директории.
-        private void ClearDirectory()
+        private void ClearDirectory(string path)
         {
-            DirectoryInfo dirToClear = new DirectoryInfo(FileManagerHelper.WorkingDir);
+            DirectoryInfo dirToClear = new DirectoryInfo(path);
 
             foreach (FileInfo file in dirToClear.GetFiles())
             {
