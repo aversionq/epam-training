@@ -61,12 +61,20 @@ namespace DynamicArrayClassLibrary
             set
             {
                 T[] tempArray = new T[value];
-                for (int i = 0; i < value; i++)
+
+                if (value < Length)
                 {
-                    tempArray[i] = _dynamicArray[i];
+                    for (int i = 0; i < value; i++)
+                    {
+                        tempArray[i] = _dynamicArray[i];
+                    }
+                    _dynamicArray = tempArray;
+                    Length = value;     // Изменяем длину массива, т.к новое Capacity меньше старой длины массива.
                 }
-                _dynamicArray = tempArray;
-                Length = value;
+                else
+                {
+                    _dynamicArray = tempArray;
+                }
             }
         }
 

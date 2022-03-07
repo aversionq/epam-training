@@ -8,14 +8,13 @@ namespace Task_3._1._2
 {
     class TextHandler
     {
-        private static string _text;
-        private static Dictionary<string, int> _wordsAmountDict;
-        private static string[] separators = { " ", ".", ",", ":", "?", "!", "/", ";", "(", ")" };
-
         public static void AnalyseText()
         {
-            InputText();
-            CountRepetitions();
+            Dictionary<string, int> wordsAmountDict = new Dictionary<string, int>();
+            string text;
+
+            text = InputText();
+            CountRepetitions(wordsAmountDict, text);
 
             string numInput;
             int repetitionsNum;
@@ -28,7 +27,7 @@ namespace Task_3._1._2
             Console.WriteLine();
             if (checkInput)
             {
-                foreach (var item in _wordsAmountDict)
+                foreach (var item in wordsAmountDict)
                 {
                     if (item.Value > repetitionsNum)
                     {
@@ -37,7 +36,7 @@ namespace Task_3._1._2
                 }
                 Console.WriteLine("--------------------------------------------------------");
                 Console.WriteLine("Full list of word repetitions:");
-                PrintPairs();
+                PrintPairs(wordsAmountDict);
             }
             else
             {
@@ -45,17 +44,17 @@ namespace Task_3._1._2
             }
         }
 
-        private static void InputText()
+        private static string InputText()
         {
             Console.WriteLine("Input your text here: ");
-            _text = Console.ReadLine();
+            return Console.ReadLine();
         }
 
-        private static void CountRepetitions()
+        private static Dictionary<string, int> CountRepetitions(Dictionary<string, int> wordsAmountDict, string text)
         {
-            _wordsAmountDict = new Dictionary<string, int>();
+            string[] separators = { " ", ".", ",", ":", "?", "!", "/", ";", "(", ")" };
 
-            string[] splittedText = _text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            string[] splittedText = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < splittedText.Length; i++)
             {
                 splittedText[i] = splittedText[i].ToLower();
@@ -63,20 +62,22 @@ namespace Task_3._1._2
 
             foreach (var item in splittedText)
             {
-                if (_wordsAmountDict.ContainsKey(item))
+                if (wordsAmountDict.ContainsKey(item))
                 {
-                    _wordsAmountDict[item]++;
+                    wordsAmountDict[item]++;
                 }
                 else
                 {
-                    _wordsAmountDict.Add(item, 1);
+                    wordsAmountDict.Add(item, 1);
                 }
             }
+
+            return wordsAmountDict;
         }
 
-        private static void PrintPairs()
+        private static void PrintPairs(Dictionary<string, int> wordsAmountDict)
         {
-            foreach (var item in _wordsAmountDict)
+            foreach (var item in wordsAmountDict)
             {
                 Console.WriteLine($"Word: {item.Key, 12} | Repetitions: {item.Value}");
             }
