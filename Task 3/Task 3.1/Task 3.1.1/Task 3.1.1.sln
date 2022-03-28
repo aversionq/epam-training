@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task 3.1.1", "Task 3.1.1\Task 3.1.1.csproj", "{B3D97D83-86F3-4E54-86EE-D9C79C76CA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClassLibrary", "GameClassLibrary\GameClassLibrary.csproj", "{203E6A7C-195A-4B9D-85DE-DDFD8132290F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3D97D83-86F3-4E54-86EE-D9C79C76CA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D97D83-86F3-4E54-86EE-D9C79C76CA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D97D83-86F3-4E54-86EE-D9C79C76CA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D97D83-86F3-4E54-86EE-D9C79C76CA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{203E6A7C-195A-4B9D-85DE-DDFD8132290F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{203E6A7C-195A-4B9D-85DE-DDFD8132290F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{203E6A7C-195A-4B9D-85DE-DDFD8132290F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{203E6A7C-195A-4B9D-85DE-DDFD8132290F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C76A126-9569-4880-AE2D-053D2802283A}
+	EndGlobalSection
+EndGlobal
