@@ -8,8 +8,8 @@ namespace PizzeriaClassLibrary
 {
     public class Pizzeria
     {
-        private List<PizzaTypes> _orders;
-        private List<bool> _doneOrders;
+        private static List<PizzaTypes> _orders;
+        private static List<bool> _doneOrders;
 
         public enum PizzaTypes : byte
         {
@@ -23,24 +23,19 @@ namespace PizzeriaClassLibrary
         
         public Pizzeria(string name)
         {
-            this.CurrentOrderNum = 0;
+            CurrentOrderNum = 0;
             this.Name = name;
             _orders = new List<PizzaTypes>();
             _doneOrders = new List<bool>();
         }
 
-        public int CurrentOrderNum { get; private set; }
         public string Name { get; private set; }
 
-        public int TakeOrder(PizzaTypes pizza)
+        internal static void TakeOrder(PizzaTypes pizza)
         {
-            this.CurrentOrderNum++;
-
             _orders.Add(pizza);
             _doneOrders.Add(false);
             CookPizza();
-
-            return CurrentOrderNum;
         }
 
         public void PrintMenu()
@@ -53,7 +48,9 @@ namespace PizzeriaClassLibrary
             }
         }
 
-        internal bool CheckOrder(int orderNum)
+        internal static int CurrentOrderNum { get; private set; }
+
+        internal static bool CheckOrder(int orderNum)
         {
             if (_doneOrders[orderNum])
             {
@@ -67,19 +64,24 @@ namespace PizzeriaClassLibrary
             }
         }
 
-        async private void CookPizza()
+        internal static int GiveOrderNumber()
         {
-            await Task.Delay(2000);
-            _doneOrders[this.CurrentOrderNum - 1] = true;
+            return CurrentOrderNum++;
         }
 
-        private void OrderReadyMessage(int orderNum)
+        static async private void CookPizza()
+        {
+            await Task.Delay(2000);
+            _doneOrders[CurrentOrderNum - 1] = true;
+        }
+
+        private static void OrderReadyMessage(int orderNum)
         {
             Console.WriteLine($"Order number {orderNum + 1}, your pizza " +
                 $"{_orders[orderNum]} is ready! Bon appetit" + Environment.NewLine);
         }
 
-        private void OrderNotReadyMessage(int orderNum)
+        private static void OrderNotReadyMessage(int orderNum)
         {
             Console.WriteLine($"Order number {orderNum + 1}, your pizza " +
                 $"{_orders[orderNum]} is not ready yet...");

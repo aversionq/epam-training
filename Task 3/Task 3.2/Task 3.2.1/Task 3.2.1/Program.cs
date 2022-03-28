@@ -126,7 +126,8 @@ namespace Task_3._2._1
             //    Console.Write(item + " ");
             //}
             //Console.WriteLine();
-            //cloneTest.Capacity = 10;
+            //Console.WriteLine("capacity: ");
+            //cloneTest.Capacity = 30;
             //Console.WriteLine();
             //Console.WriteLine("cloneTest:");
             //Console.WriteLine(cloneTest.Capacity);
