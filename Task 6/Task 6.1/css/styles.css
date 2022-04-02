@@ -1,0 +1,33 @@
+@import "reset.css";
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.header {
+    width: 200px;
+    margin: 40px auto;
+}
+
+.header__menu {
+    background-color: rgb(227, 206, 108);
+    border: 1px solid #000;
+    border-radius: 20px;
+    box-shadow: 4px 4px rgb(128, 0, 0);
+}
+
+.header__list {
+    padding: 10px;
+}
+
+.list__item {
+    font-size: 14px;
+    /* line-height: 20px; */
+    padding-bottom: 10px;
+    color: rgb(128, 0, 0);
+}
+
+.list__item:last-child {
+    padding: 0px;
+}
