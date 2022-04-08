@@ -1,0 +1,77 @@
+@import "reset.css";
+
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.reg {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    width: 400px;
+}
+
+.reg__body {
+    background-color: rgb(1, 145, 208);
+    font-family: Arial, Helvetica, sans-serif;
+    border: 4px solid rgb(16, 73, 126);
+}
+
+.reg__form {
+}
+
+.reg__form-title {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.reg__title {
+    color: #fff;
+    font-size: 24px;
+    padding: 15px;
+    /* margin-bottom: 15px; */
+}
+
+.reg__title::after {
+    content: '';
+    position: absolute;
+    top: 57px;
+    left: 0%;
+    width: 392px;
+    height: 1px;
+    background-color: #fff;
+    margin: 0px 4px;
+}
+
+.reg__subblock {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px 70px 15px 10px;
+}
+
+.reg__subblock-item {
+    flex: 0 0 50%;
+    padding: 10px;
+}
+
+.reg__subblock-item:first-child {
+    flex: 0 0 100%;
+}
+
+.reg__btn {
+    padding: 10px;
+    margin-top: 12px;
+}
+
+.form__input {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #808080;
+}
+
+.form__button {
+    padding: 5px;
+    background-color: rgb(255, 224, 128);
+}
