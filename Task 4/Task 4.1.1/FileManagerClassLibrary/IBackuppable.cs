@@ -8,6 +8,6 @@ namespace FileManagerClassLibrary
 {
     interface IBackuppable
     {
-        void StartBackup();
+        void StartBackup(string workDir);
     }
 }

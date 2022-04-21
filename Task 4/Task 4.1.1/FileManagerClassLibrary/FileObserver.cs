@@ -11,6 +11,7 @@ namespace FileManagerClassLibrary
     internal class FileObserver : IObservable
     {
         private FileSystemWatcher watcher;  // Объект для отслеживания состояния файлов.
+        internal FileManagerHelper managerHelper = new FileManagerHelper();
 
         public FileObserver(string dir)
         {
@@ -20,7 +21,7 @@ namespace FileManagerClassLibrary
             }
             else
             {
-                FileManagerHelper.WorkingDir = dir;
+                managerHelper.WorkingDir = dir;
 
                 // Конфигурация отслеживателя состояния файлов.
                 watcher = new FileSystemWatcher(dir);
@@ -34,14 +35,14 @@ namespace FileManagerClassLibrary
 
                 // Создание директории с бэкапами.
                 DirectoryInfo tempDirInfo = new DirectoryInfo(dir);
-                FileManagerHelper.BackupDir = tempDirInfo.Parent + $@"\{tempDirInfo.Name}Backup\";
-                _ = Directory.CreateDirectory(FileManagerHelper.BackupDir);
+                managerHelper.BackupDir = tempDirInfo.Parent + $@"\{tempDirInfo.Name}Backup\";
+                _ = Directory.CreateDirectory(managerHelper.BackupDir);
             }
         }
 
         public void StartObservation()
         {
-            Console.WriteLine($"Started observing directory: {FileManagerHelper.WorkingDir}");
+            Console.WriteLine($"Started observing directory: {managerHelper.WorkingDir}");
 
             watcher.EnableRaisingEvents = true;
             watcher.IncludeSubdirectories = true;
@@ -61,7 +62,7 @@ namespace FileManagerClassLibrary
             }
             Console.WriteLine($"Changed: {e.FullPath}");
 
-            await Task.Run(() => FileManagerHelper.CreateBackup()); // Произошло изменение - создаём бэкап.
+            await Task.Run(() => managerHelper.CreateBackup(managerHelper.WorkingDir, managerHelper.BackupDir)); // Произошло изменение - создаём бэкап.
         }
 
         private async void OnCreated(object sender, FileSystemEventArgs e)
@@ -69,14 +70,14 @@ namespace FileManagerClassLibrary
             string value = $"Created: {e.FullPath}";
             Console.WriteLine(value);
 
-            await Task.Run(() => FileManagerHelper.CreateBackup()); // Произошло изменение - создаём бэкап.
+            await Task.Run(() => managerHelper.CreateBackup(managerHelper.WorkingDir, managerHelper.BackupDir)); // Произошло изменение - создаём бэкап.
         }
 
         private async void OnDeleted(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine($"Deleted: {e.FullPath}");
 
-            await Task.Run(() => FileManagerHelper.CreateBackup());  // Произошло изменение - создаём бэкап.
+            await Task.Run(() => managerHelper.CreateBackup(managerHelper.WorkingDir, managerHelper.BackupDir));  // Произошло изменение - создаём бэкап.
         }
 
         private async void OnRenamed(object sender, RenamedEventArgs e)
@@ -85,7 +86,7 @@ namespace FileManagerClassLibrary
             Console.WriteLine($"    Old: {e.OldFullPath}");
             Console.WriteLine($"    New: {e.FullPath}");
 
-            await Task.Run(() => FileManagerHelper.CreateBackup());  // Произошло изменение - создаём бэкап.
+            await Task.Run(() => managerHelper.CreateBackup(managerHelper.WorkingDir, managerHelper.BackupDir));  // Произошло изменение - создаём бэкап.
         }
     }
 }

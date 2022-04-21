@@ -44,8 +44,8 @@ namespace FileManagerClassLibrary
                         observing.Abort();
                         break;
                     case 3:
-                        FileBackupper fileBackupper = new FileBackupper(WorkPath);
-                        fileBackupper.StartBackup();
+                        FileBackupper fileBackupper = new FileBackupper(this.WorkPath, fileObserver.managerHelper.BackupDir);
+                        fileBackupper.StartBackup(this.WorkPath);
                         break;
                     case 4:
                         return;

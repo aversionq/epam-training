@@ -9,10 +9,12 @@ namespace FileManagerClassLibrary
 {
     internal class FileBackupper : IBackuppable
     {
-        // Массив с путями всех доступных бэкапов.
-        private static string[] _backups = Directory.GetDirectories(FileManagerHelper.BackupDir);
+        private FileManagerHelper fileManagerHelper = new FileManagerHelper();
 
-        public FileBackupper(string dir)
+        // Массив с путями всех доступных бэкапов.
+        private string[] _backups;
+
+        public FileBackupper(string dir, string backupDir)
         {
             if (!Directory.Exists(dir))
             {
@@ -20,26 +22,29 @@ namespace FileManagerClassLibrary
             }
             else
             {
-                FileManagerHelper.WorkingDir = dir;
+                fileManagerHelper.WorkingDir = dir;
+                fileManagerHelper.BackupDir = backupDir;
+                _backups = Directory.GetDirectories(fileManagerHelper.BackupDir);
+                // FileManagerHelper.WorkingDir = dir;
             }
         }
 
-        public void StartBackup()
+        public void StartBackup(string workDir)
         {
             int choice = GetBackupNumber();
-            ClearDirectory(FileManagerHelper.WorkingDir);   // Чистим рабочую директорию.
+            ClearDirectory(workDir);   // Чистим рабочую директорию.
             // Копируем в рабочую директорию нужный бэкап.
-            FileManagerHelper.CreateDirectoryCopy(_backups[choice], FileManagerHelper.WorkingDir);
+            fileManagerHelper.CreateDirectoryCopy(this._backups[choice], workDir);
         }
 
         // Метод выводит на экран пользователя список доступных бэкапов.
         private void ShowAvailableBackups()
         {
-            if (_backups.Length > 1)
+            if (this._backups.Length > 1)
             {
-                for (int i = 0; i < _backups.Length; i++)
+                for (int i = 0; i < this._backups.Length; i++)
                 {
-                    Console.WriteLine($"{i + 1}: {new DirectoryInfo(_backups[i]).Name}");
+                    Console.WriteLine($"{i + 1}: {new DirectoryInfo(this._backups[i]).Name}");
                 }
             }
             else

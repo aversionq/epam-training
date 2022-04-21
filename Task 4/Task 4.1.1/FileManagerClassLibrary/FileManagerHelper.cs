@@ -9,20 +9,20 @@ namespace FileManagerClassLibrary
 {
     internal class FileManagerHelper
     {
-        internal static string WorkingDir { get; set; }
-        internal static string BackupDir { get; set; }
-        internal static string Date { get => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"); }
+        internal string WorkingDir { get; set; }
+        internal string BackupDir { get; set; }
+        internal string Date { get => DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss"); }
 
-        internal static void CreateBackup()
+        internal void CreateBackup(string work, string backup)
         {
             string backupDate = Date;
 
             // Создаём директории в бэкапе.
-            foreach (var dir in Directory.GetDirectories(WorkingDir, "*", SearchOption.AllDirectories))
+            foreach (var dir in Directory.GetDirectories(work, "*", SearchOption.AllDirectories))
             {
                 try
                 {
-                    Directory.CreateDirectory(dir.Replace(WorkingDir, BackupDir + backupDate));
+                    Directory.CreateDirectory(dir.Replace(work, backup + backupDate));
                 }
                 catch
                 {
@@ -38,11 +38,11 @@ namespace FileManagerClassLibrary
             Console.WriteLine("Copying dirs ended.");
 
             // Копируем файлы в бэкап.
-            foreach (var file in Directory.GetFiles(WorkingDir, "*.txt", SearchOption.AllDirectories))
+            foreach (var file in Directory.GetFiles(work, "*.txt", SearchOption.AllDirectories))
             {
                 try
                 {
-                    File.Copy(file, file.Replace(WorkingDir, BackupDir + backupDate), true);
+                    File.Copy(file, file.Replace(work, backup + backupDate), true);
                 }
                 catch
                 {
@@ -58,7 +58,7 @@ namespace FileManagerClassLibrary
             Console.WriteLine("Copying txts ended.");
         }
 
-        internal static void CreateDirectoryCopy(string copyFromPath, string copyToPath)
+        internal void CreateDirectoryCopy(string copyFromPath, string copyToPath)
         {
             foreach (var dir in Directory.GetDirectories(copyFromPath, "*", SearchOption.AllDirectories))
             {
