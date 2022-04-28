@@ -1,4 +1,4 @@
-function char_remover(str) {
+function charRemover(str) {
     let splittedStr = str.split(" ")
     let charsToRemove = []
 
